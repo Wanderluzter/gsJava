@@ -1,20 +1,24 @@
 package com.fiap.gsJava.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
+@Table(name = "evento")
 @Data
 public class Evento {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-    private String dataHora;
-    private String tipo;
-    private String descricao;
-    private String localizacao;
+    @Column(name = "id_evento")
+    private Long id;
+
+    @NotBlank(message = "Nome do evento é obrigatório")
+    @Size(max = 50)
+    private String nomeEvento;
+
 }
