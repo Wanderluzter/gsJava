@@ -1,5 +1,6 @@
 package com.fiap.gsJava.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -15,6 +16,7 @@ import lombok.Data;
 public class Usuario {
 
     @Id
+    @Column(name = "id_usuario")
     private Long id;
 
     @NotBlank(message = "Nome é obrigatório")
@@ -25,13 +27,13 @@ public class Usuario {
     private String telefone;
 
     @Pattern(regexp = "\\d{10,13}", message = "Telefone de emergência deve conter entre 10 e 13 dígitos")
+    @Column(name = "telefone_emergencia")
     private String telefoneEmergencia;
 
     @Email(message = "Email inválido")
     private String email;
 
     @NotBlank(message = "Senha é obrigatória")
-    @Size(min = 6, max = 30, message = "Senha deve ter entre 6 e 30 caracteres")
     private String senha;
 
 }
