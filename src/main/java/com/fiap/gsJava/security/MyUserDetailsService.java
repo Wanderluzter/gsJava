@@ -20,10 +20,6 @@ public class MyUserDetailsService implements UserDetailsService {
         Usuario usuario = usuarioRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado com email: " + email));
 
-        return org.springframework.security.core.userdetails.User
-                .withUsername(usuario.getEmail())
-                .password(usuario.getSenha()) // Senha já deve estar criptografada!
-                .authorities("USER") // Pode ser customizado
-                .build();
+        return new UsuarioDetails(usuario);
     }
 }

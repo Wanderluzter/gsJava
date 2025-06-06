@@ -24,18 +24,15 @@ public class AuthController {
     private JwtUtil jwtUtil;
 
     @PostMapping("/login")
-    public String createAuthenticationToken(@RequestBody AuthRequest authRequest) throws Exception {
+    public String createToken(@RequestBody AuthRequest request) throws Exception {
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getSenha()));
+                    new UsernamePasswordAuthenticationToken(request.getEmail(), request.getSenha()));
         } catch (BadCredentialsException e) {
-            throw new Exception("Usuário ou senha incorretos", e);
+            throw new Exception("Credenciais inválidas", e);
         }
 
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getEmail());
-
-        final String jwt = jwtUtil.generateToken(userDetails.getUsername());
-
-        return jwt;
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmail());
+        return jwtUtil.generateToken(userDetails);
     }
 }
