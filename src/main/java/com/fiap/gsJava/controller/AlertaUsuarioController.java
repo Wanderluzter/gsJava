@@ -33,7 +33,7 @@ public class AlertaUsuarioController {
     public AlertaUsuario getById(@PathVariable Long id) {
         return service.getById(id);
     }
-
+    
     @PostMapping
     public AlertaUsuario create(@RequestBody @Valid AlertaUsuarioDto dto) {
         return service.create(dto);

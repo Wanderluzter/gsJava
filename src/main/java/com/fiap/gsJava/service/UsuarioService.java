@@ -23,6 +23,10 @@ public class UsuarioService {
         return repository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
     }
 
+    public Usuario getByEmail(String email) {
+        return repository.findByEmail(email).orElseThrow(() -> new RuntimeException("Usuário não encontrado com o email: " + email));
+    }
+
     public Usuario create(UsuarioDto dto) {
         Usuario usuario = new Usuario();
         usuario.setNome(dto.getNome());

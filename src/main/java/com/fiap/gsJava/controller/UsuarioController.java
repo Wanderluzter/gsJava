@@ -35,6 +35,11 @@ public class UsuarioController {
         return service.getById(id);
     }
 
+    @GetMapping("/email/{email}")
+    public Usuario getByEmail(@PathVariable String email) {
+        return service.getByEmail(email);
+    }
+
     @PostMapping
     public Usuario create(@RequestBody @Valid UsuarioDto dto) {
         return service.create(dto);
