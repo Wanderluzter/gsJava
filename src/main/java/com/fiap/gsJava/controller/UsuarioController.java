@@ -29,7 +29,7 @@ public class UsuarioController {
     public List<Usuario> getAll() {
         return service.getAll();
     }
-
+    
     @GetMapping("/{id}")
     public Usuario getById(@PathVariable Long id) {
         return service.getById(id);

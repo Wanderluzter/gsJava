@@ -31,11 +31,11 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         String path = request.getRequestURI();
         // Ignora a requisição de login para não tentar validar token nela
-        if (path.equals("/auth/login")) {
-            chain.doFilter(request, response);
-            return;
-        }
-
+        if ((path.equals("/auth/login")) || 
+    (path.equals("/api/usuarios") && request.getMethod().equalsIgnoreCase("POST"))) {
+    chain.doFilter(request, response);
+    return;
+}
         final String authHeader = request.getHeader("Authorization");
 
         String username = null;
