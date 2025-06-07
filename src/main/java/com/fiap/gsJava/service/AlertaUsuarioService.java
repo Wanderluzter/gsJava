@@ -51,7 +51,7 @@ public class AlertaUsuarioService {
         AlertaUsuario alerta = new AlertaUsuario();
         alerta.setId(dto.getId());
         alerta.setDataAlerta(dto.getDataAlerta());
-        alerta.setGravidade(dto.getGravidade());
+        alerta.setDescricao(dto.getDescricao());
         alerta.setUsuario(usuario);
         alerta.setLocalizacao(localizacao);
         alerta.setEvento(evento);

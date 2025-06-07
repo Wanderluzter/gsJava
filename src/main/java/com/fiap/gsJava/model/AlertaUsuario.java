@@ -27,7 +27,7 @@ public class AlertaUsuario {
     private LocalDate dataAlerta;
 
     @NotBlank(message = "Descrição do alerta é obrigatória")
-    private String gravidade;
+    private String descricao;
 
     @NotNull(message = "Localização é obrigatória")
     @ManyToOne

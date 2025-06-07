@@ -8,7 +8,7 @@ import lombok.Data;
 public class AlertaUsuarioDto {
     private Long id;
     private LocalDate dataAlerta;
-    private String gravidade;
+    private String descricao;
     private Long idUsuario;
     private Long idLocalizacao;
     private Long idEvento;
