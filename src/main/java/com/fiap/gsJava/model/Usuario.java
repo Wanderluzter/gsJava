@@ -34,6 +34,8 @@ public class Usuario {
     private String telefoneEmergencia;
 
     @Email(message = "Email inválido")
+    @Column(unique = true, nullable = false)
+    @NotBlank(message = "Email é obrigatório")
     private String email;
 
     @NotBlank(message = "Senha é obrigatória")
