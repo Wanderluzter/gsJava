@@ -113,10 +113,8 @@ Authorization: Bearer seu.token.jwt
 
 ## 🔗 Deploy
 
-- API Swagger: [https://api.geoguardian.com/swagger-ui.html](https://api.geoguardian.com/swagger-ui.html)
-- App Mobile: Em desenvolvimento...
-
----
+- Microsoft Azure com ACI.
+- Executar o script 'deploy.sh' e utilizar a URL fornecida para testar os Endpoints.
 
 ## 👥 Equipe
 
