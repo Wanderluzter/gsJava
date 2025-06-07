@@ -3,6 +3,7 @@ package com.fiap.gsJava.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.fiap.gsJava.model.Usuario;
@@ -14,6 +15,9 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository repository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public List<Usuario> getAll() {
         return repository.findAll();
@@ -33,7 +37,10 @@ public class UsuarioService {
         usuario.setTelefone(dto.getTelefone());
         usuario.setTelefoneEmergencia(dto.getTelefoneEmergencia());
         usuario.setEmail(dto.getEmail());
-        usuario.setSenha(dto.getSenha());
+        
+        String senhaCriptografada = passwordEncoder.encode(dto.getSenha());
+        usuario.setSenha(senhaCriptografada);
+
         return repository.save(usuario);
     }
 
